@@ -131,8 +131,7 @@ export default function Projects() {
               duration: 0.5,
               delay: 0.1 * index,
               repeat: Infinity,
-              repeatType: "mirror",
-              duration: 3
+              repeatType: "mirror"
             }}
             className={`absolute ${styles.techBubble}`}
             style={{
