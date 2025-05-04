@@ -12,9 +12,7 @@ export default function Hero() {
     const typewriterElement = typewriterRef.current;
     if (!typewriterElement) return;
 
-    const phrases = [
-      "Guilherme Vidichosqui Men"
-    ];
+    const phrases = ["Guilherme Vidichosqui Men"];
     let currentPhraseIndex = 0;
     let charIndex = 0;
     let timeoutId: NodeJS.Timeout | undefined;
@@ -26,9 +24,9 @@ export default function Hero() {
           typewriterElement.textContent += currentPhrase.charAt(charIndex);
         }
         charIndex++;
-        timeoutId = setTimeout(typeWriterEffect, 100); // Velocidade de digitação
+        timeoutId = setTimeout(typeWriterEffect, 100);
       } else {
-        timeoutId = setTimeout(() => eraseEffect(), 2000); // Pausa após digitar
+        timeoutId = setTimeout(() => eraseEffect(), 2000);
       }
     }
 
@@ -36,23 +34,18 @@ export default function Hero() {
       const currentPhrase = phrases[currentPhraseIndex];
       if (charIndex > 0) {
         if (typewriterElement) {
-          typewriterElement.textContent = currentPhrase.substring(
-            0,
-            charIndex - 1,
-          );
+          typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
         }
         charIndex--;
-        timeoutId = setTimeout(eraseEffect, 50); // Velocidade para apagar
+        timeoutId = setTimeout(eraseEffect, 50);
       } else {
-        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length; // Próxima frase
-        timeoutId = setTimeout(typeWriterEffect, 500); // Pausa antes de digitar novamente
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+        timeoutId = setTimeout(typeWriterEffect, 500);
       }
     }
 
-    // Inicia a animação
     typeWriterEffect();
 
-    // Cleanup function
     return () => {
       if (timeoutId) {
         clearTimeout(timeoutId);
