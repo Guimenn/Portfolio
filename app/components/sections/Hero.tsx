@@ -17,7 +17,7 @@ export default function Hero() {
     ];
     let currentPhraseIndex = 0;
     let charIndex = 0;
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: NodeJS.Timeout | undefined;
 
     function typeWriterEffect() {
       const currentPhrase = phrases[currentPhraseIndex];
