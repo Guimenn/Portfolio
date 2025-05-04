@@ -17,6 +17,7 @@ export default function Hero() {
     ];
     let currentPhraseIndex = 0;
     let charIndex = 0;
+    let timeoutId: NodeJS.Timeout;
 
     function typeWriterEffect() {
       const currentPhrase = phrases[currentPhraseIndex];
@@ -25,9 +26,9 @@ export default function Hero() {
           typewriterElement.textContent += currentPhrase.charAt(charIndex);
         }
         charIndex++;
-        setTimeout(typeWriterEffect, 100); // Velocidade de digitação
+        timeoutId = setTimeout(typeWriterEffect, 100); // Velocidade de digitação
       } else {
-        setTimeout(() => eraseEffect(), 2000); // Pausa após digitar
+        timeoutId = setTimeout(() => eraseEffect(), 2000); // Pausa após digitar
       }
     }
 
@@ -41,10 +42,10 @@ export default function Hero() {
           );
         }
         charIndex--;
-        setTimeout(eraseEffect, 50); // Velocidade para apagar
+        timeoutId = setTimeout(eraseEffect, 50); // Velocidade para apagar
       } else {
         currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length; // Próxima frase
-        setTimeout(typeWriterEffect, 500); // Pausa antes de digitar novamente
+        timeoutId = setTimeout(typeWriterEffect, 500); // Pausa antes de digitar novamente
       }
     }
 
@@ -53,10 +54,8 @@ export default function Hero() {
 
     // Cleanup function
     return () => {
-      // Clear any pending timeouts
-      let id = setTimeout(null, 0);
-      while (id--) {
-        clearTimeout(id);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
     };
   }, []);
