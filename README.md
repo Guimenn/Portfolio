@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Guilherme Vidichosqui Men – Portfólio
 
-## Getting Started
+[🔗 Acesse meu portfólio online!](https://guimen.dev)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 👨‍💻 Sobre
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Olá! Eu sou **Guilherme Vidichosqui Men**, futuro desenvolvedor **Full Stack** com paixão por tecnologia.  
+Este repositório contém o código-fonte do meu portfólio online: um site responsivo, interativo e moderno, onde você pode conhecer minhas **habilidades**, **projetos**, **tecnologias** e muito mais.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🎯 Objetivo Profissional
+Como desenvolvedor Full Stack, busco aprendizado contínuo, inovação e entrega de soluções de alta qualidade. Quero contribuir para projetos que impactem positivamente a sociedade e levem experiências digitais a um novo patamar.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧰 Tecnologias Utilizadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Next.js** – renderização híbrida (SSR & SSG) e roteamento de páginas  
+- **TypeScript** – tipagem estática e segurança de código  
+- **React** – construção de interfaces reativas  
+- **Tailwind CSS** – utilitários para estilização rápida e responsiva  
+- **Flowbite React** – biblioteca de componentes UI sobre Tailwind CSS  
+- **NodeJS** – gerenciador de pacotes leve e rápido  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🎨 **Paleta de Cores:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O portfólio utiliza uma paleta de cores moderna e elegante para proporcionar uma visualização limpa e agradável.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **`#000000`** – Preto  
+- **`#19D1C2`** – Verde Água  
+- **`#1D1D1D`** – Cinza Escuro  
+- **`#FFFFFF`** – Branco
+
+Essas cores garantem **alto contraste**, legibilidade e um visual sóbrio e moderno.
+
+---
+
+## ⚡ Funcionalidades e Animações
+
+- **Design responsivo**: layouts fluem de mobile a desktop  
+- **Animações CSS**: transições suaves em botões, cards e links  
+- **Efeitos de rolagem**: seções destacam-se ao entrar na viewport  
+- **Componentes interativos**: modais, tooltips e menus off-canvas via Flowbite React  
+
+---
+
+## 📫 Contato
+
+✉️ Email: men.guilherme5@gmail.com
+
+🌐 LinkedIn: linkedin.com/in/guimenn
+
+🐙 GitHub: github.com/Guimenn
+
+< Guimen />
