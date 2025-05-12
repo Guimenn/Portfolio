@@ -57,4 +57,3 @@ Essas cores garantem **alto contraste**, legibilidade e um visual sóbrio e mode
 
 🐙 GitHub: github.com/Guimenn
 
-< Guimen />
