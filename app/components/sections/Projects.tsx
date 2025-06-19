@@ -7,6 +7,32 @@ import styles from "../styles/Projects.module.css";
 const projectsData = [
   {
     id: 1,
+    title: "Studdy",
+    description: "Plataforma educacional de simulados online, desenvolvida para auxiliar estudantes na preparação para exames e avaliações. Possui interface intuitiva, simulados, feedback imediato, sistema de pontuação e resultados. Projeto composto por front-end e back-end dedicados.",
+    imageUrl: "/img/studdy.png",
+    links: [
+      { label: "Front-end", url: "https://github.com/Guimenn/Studdy" },
+      { label: "Back-end (API)", url: "https://github.com/Guimenn/api-studdy" }
+    ],
+    demoLink: "https://studdy-three.vercel.app",
+    technologies: [
+      "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express", "Prisma ORM", "PostgreSQL", "Vercel"
+    ],
+    features: [
+      "Realização de simulados online",
+      "Interface amigável e responsiva",
+      "Navegação intuitiva entre questões",
+      "Feedback imediato sobre o desempenho",
+      "Sistema de pontuação e resultados",
+      "Back-end dedicado (API RESTful)",
+      "Gerenciamento de usuários e resultados",
+      "Integração com banco de dados PostgreSQL",
+      "Autenticação e segurança"
+    ],
+    year: 2025
+  },
+  {
+    id: 2,
     title: "Thornfield",
     description: "Site elegante para uma marca premium de whisky, apresentando uma experiência imersiva com design sofisticado. Desenvolvido com foco na história da destilaria, processo de fabricação e catálogo de produtos, oferecendo uma jornada visual que reflete a tradição e qualidade da marca.",
     imageUrl: "/img/Thornfield.png",
@@ -17,7 +43,7 @@ const projectsData = [
     year: 2025
   },
   {
-    id: 2,
+    id: 3,
     title: "CursosOnline",
     description: "Plataforma educacional completa para cursos online, oferecendo ambiente interativo para estudantes e professores. Inclui sistema de matrícula, biblioteca de conteúdos, avaliações automáticas e certificação digital, tudo com interface intuitiva e responsiva para acesso em qualquer dispositivo.",
     imageUrl: "/img/estudomind.png",
@@ -26,29 +52,8 @@ const projectsData = [
     technologies: ["HTML", "CSS", "JavaScript", "PHP"],
     features: ["Gestão de conteúdo educacional", "Painel administrativo", "Interface acessível conforme WCAG"],
     year: 2024
-  },
-  {
-    id: 3,
-    title: "Rimac",
-    description: "Site inspirado na marca de supercarros Rimac, apresentando um design moderno e minimalista que reflete a elegância e inovação dos veículos. Desenvolvido com foco na experiência do usuário, oferecendo navegação intuitiva e elementos interativos que destacam as características dos modelos da marca.",
-    imageUrl: "/img/rimac.png",
-    link: "https://github.com/Guimenn/Rimac",
-    demoLink: "https://guimenn.github.io/Rimac",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    features: ["Design de alta fidelidade", "Interações dinâmicas", "Interface responsiva"],
-    year: 2024
-  },
-  {
-    id: 4,
-    title: "Bugatti",
-    description: "Plataforma de e-commerce especializada com sistema integrado de vendas, incluindo fluxo de compra otimizado e módulo de notícias para engajamento de usuários.",
-    imageUrl: "/img/Bugatti.png",
-    link: "https://github.com/Guimenn/Bugatti",
-    demoLink: "https://github.com/Guimenn/Bugatti",
-    technologies: ["HTML", "CSS"],
-    features: ["Sistema de vendas integrado", "Checkout otimizado", "Módulo de conteúdo dinâmico"],
-    year: 2024
   }
+
 ];
 
 export default function Projects() {
@@ -62,7 +67,7 @@ export default function Projects() {
     // Simulate image loading
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 0);
 
     return () => clearTimeout(timer);
   }, [activeProject]);
@@ -128,8 +133,8 @@ export default function Projects() {
               y: Math.cos(Date.now() / (1000 + index * 500)) * 10
             }}
             transition={{
-              duration: 0.5,
-              delay: 0.1 * index,
+              duration: 3,
+              delay: 0.5 * index,
               repeat: Infinity,
               repeatType: "mirror"
             }}
@@ -140,7 +145,7 @@ export default function Projects() {
               backgroundColor: `rgba(25, 209, 194, ${0.1 + (index * 0.1)})`,
               padding: `${1 + index}rem`,
               borderRadius: "50%",
-              zIndex: 1
+              zIndex: 1 
             }}
           >
             <span className="text-[#19D1C2] font-medium whitespace-nowrap">{tech}</span>
@@ -302,46 +307,75 @@ export default function Projects() {
 
               {/* Action buttons */}
               <div className="flex flex-wrap gap-4">
-                {activeProject?.link && (
-                  <motion.a
-                    href={activeProject.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#19D1C2] text-gray-900 font-medium transition-all hover:bg-[#19D1C2]/90 hover:shadow-lg hover:shadow-[#19D1C2]/20"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                    Ver código
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </motion.a>
-                )}
-
-                {activeProject?.demoLink && (
-                  <motion.a
-                    href={activeProject.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group inline-flex items-center gap-2 px-5 py-3 rounded-lg border-2 border-[#19D1C2] text-[#19D1C2] font-medium transition-all hover:bg-[#19D1C2]/10"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                    Ver demonstração
-                  </motion.a>
+                {/* Para projetos com links (Studdy) */}
+                {activeProject?.links ? (
+                  <>
+                    {activeProject.demoLink && (
+                      <motion.a
+                        href={activeProject.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#19D1C2] text-gray-900 font-medium transition-all hover:bg-[#19D1C2]/90 hover:shadow-lg hover:shadow-[#19D1C2]/20"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        Ver página
+                      </motion.a>
+                    )}
+                    {activeProject.links[1] && (
+                      <motion.a
+                        href={activeProject.links[1].url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group inline-flex items-center gap-2 px-5 py-3 rounded-lg border-2 border-[#19D1C2] text-[#19D1C2] font-medium transition-all hover:bg-[#19D1C2]/10"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        Ver back-end
+                      </motion.a>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {activeProject.link && (
+                      <motion.a
+                        href={activeProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#19D1C2] text-gray-900 font-medium transition-all hover:bg-[#19D1C2]/90 hover:shadow-lg hover:shadow-[#19D1C2]/20"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        Ver código
+                      </motion.a>
+                    )}
+                    {activeProject.demoLink && (
+                      <motion.a
+                        href={activeProject.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group inline-flex items-center gap-2 px-5 py-3 rounded-lg border-2 border-[#19D1C2] text-[#19D1C2] font-medium transition-all hover:bg-[#19D1C2]/10"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        Ver demonstração
+                      </motion.a>
+                    )}
+                  </>
                 )}
               </div>
             </div>
