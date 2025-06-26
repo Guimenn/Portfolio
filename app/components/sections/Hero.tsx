@@ -80,10 +80,10 @@ export default function Hero() {
               <div className="flex flex-col items-center gap-8 sm:flex-row">
                 <div className="relative h-32 w-32 transform overflow-hidden rounded-full border-4 border-[#19D1C2] shadow-lg shadow-[#19D1C2]/30 transition-all duration-500 hover:rotate-6">
                   <Image
-                    src="/img/foto.png"
+                    src="/img/euu.png"
                     alt="Foto de perfil"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     priority
                   />
                 </div>
