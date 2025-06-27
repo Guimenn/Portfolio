@@ -153,6 +153,7 @@ export default function About() {
                       height={60}
                       className="rounded-full"
                       loading="lazy"
+                      unoptimized={item.icon.includes('.gif')}
                     />
                     {/* Tooltip */}
                     <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-900 px-2 py-1 text-xs text-white opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 z-20 flex flex-col items-center">

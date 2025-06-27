@@ -93,7 +93,7 @@ export default function About() {
   }, []);
 
   return (
-    <section 
+    <section
       id="about-section"
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950 px-4 py-16 sm:px-6 lg:px-8"
       aria-labelledby="about-title"
@@ -115,7 +115,7 @@ export default function About() {
           {/* Profile Section */}
           <Card className="bg-gray-900/70 backdrop-blur-xl border-gray-700/50">
             <div className="flex flex-col items-center text-center">
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="relative mb-6 h-40 w-40 overflow-hidden rounded-full border-4 border-[#19D1C2] shadow-lg shadow-[#19D1C2]/30"
@@ -129,12 +129,12 @@ export default function About() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </motion.div>
-              
+
               <h2 className="mb-2 text-2xl font-bold text-white">
                 Guilherme Vidichosqui Men
               </h2>
               <p className="mb-4 text-lg text-[#19D1C2]">@Guimen</p>
-              
+
               <div className="flex flex-wrap gap-1 justify-center" role="list" aria-label="Redes sociais">
                 {SOCIAL_LINKS.map((item, index) => (
                   <motion.a
@@ -147,13 +147,14 @@ export default function About() {
                     className={`flex h-18 w-18 items-center justify-center rounded-full p-2 transition-colors duration-300 ${item.class}`}
                     aria-label={item.ariaLabel}
                   >
-                    <Image 
-                      src={item.icon} 
-                      alt={item.name} 
-                      width={60} 
-                      height={60} 
+                    <Image
+                      src={item.icon}
+                      alt={item.name}
+                      width={60}
+                      height={60}
                       className="rounded-full"
                       loading="lazy"
+                      unoptimized={item.icon.includes('.gif')}
                     />
                   </motion.a>
                 ))}
@@ -177,24 +178,24 @@ export default function About() {
             </motion.div>
 
             <div className="space-y-6">
-              <motion.p 
+              <motion.p
                 className="text-lg text-gray-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                Sou um <span className="text-[#19D1C2] font-medium">desenvolvedor full stack apaixonado</span>, 
+                Sou um <span className="text-[#19D1C2] font-medium">desenvolvedor full stack apaixonado</span>,
                 transformando ideias em realidade através do código. Cada linha que escrevo é uma oportunidade de criar algo extraordinário.
               </motion.p>
-              
-              <motion.p 
+
+              <motion.p
                 className="text-lg text-gray-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                Minha jornada na tecnologia é uma constante busca por inovação e excelência. 
-                <span className="text-[#19D1C2] font-medium"> Acredito que o código é uma forma de arte</span>, 
+                Minha jornada na tecnologia é uma constante busca por inovação e excelência.
+                <span className="text-[#19D1C2] font-medium"> Acredito que o código é uma forma de arte</span>,
                 onde cada projeto é uma nova história para contar.
               </motion.p>
             </div>
@@ -217,13 +218,13 @@ export default function About() {
               ))}
             </div>
 
-            <motion.p 
+            <motion.p
               className="text-lg text-gray-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
               transition={{ duration: 0.5, delay: 1 }}
             >
-              Estou sempre aberto a novos desafios e oportunidades de colaboração. 
+              Estou sempre aberto a novos desafios e oportunidades de colaboração.
               <span className="text-[#19D1C2] font-medium"> Vamos criar algo incrível juntos?</span>
             </motion.p>
           </div>

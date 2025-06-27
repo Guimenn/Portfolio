@@ -81,7 +81,7 @@ export default function Hero() {
                 <div className="relative h-32 w-32 transform overflow-hidden rounded-full border-4 border-[#19D1C2] shadow-lg shadow-[#19D1C2]/30 transition-all duration-500 hover:rotate-6">
                   <Image
                     src="/img/euu.png"
-                    alt="Foto de perfil"
+                    alt="Guilherme Men - Desenvolvedor Full Stack"
                     fill
                     className="object-cover object-center"
                     priority
@@ -110,20 +110,28 @@ export default function Hero() {
               className="rounded-2xl border border-gray-700/50 bg-gray-900/70 p-10 shadow-2xl backdrop-blur-xl"
             >
               <h1 className="mb-8 text-4xl leading-tight font-extrabold text-white md:text-6xl">
-              TRANSFORME{" "}
+                TRANSFORME{" "}
                 <span className="group relative inline-block text-[#19D1C2]">
-                SONHOS
+                  SONHOS
                   <span className="absolute bottom-0 left-0 h-1 w-0 rounded-full bg-[#19D1C2]/70 transition-all duration-700 group-hover:w-full"></span>
                 </span>{" "}
                 EM{" "}
                 <span className="group relative inline-block text-[#19D1C2]">
-                REALIDADE
+                  REALIDADE
                   <span className="absolute bottom-0 left-0 h-1 w-0 rounded-full bg-[#19D1C2]/70 transition-all duration-700 group-hover:w-full"></span>
                 </span>
               </h1>
               <p className="mb-10 text-xl leading-relaxed font-medium text-gray-300 md:text-2xl">
-              UNINDO TECNOLOGIA E CRIATIVIDADE PARA CRIAR SOLUÇÕES EXTRAORDINÁRIAS
+                UNINDO TECNOLOGIA E CRIATIVIDADE PARA CRIAR SOLUÇÕES EXTRAORDINÁRIAS
               </p>
+
+              {/* Conteúdo adicional para SEO */}
+              <div className="mb-8 text-gray-400 text-lg leading-relaxed">
+                <p>
+                  Especialista em desenvolvimento web com React, Next.js, Node.js e TypeScript.
+                  Criando aplicações modernas, responsivas e escaláveis para transformar ideias em realidade digital.
+                </p>
+              </div>
 
               <div className="mt-12 flex flex-wrap gap-6">
                 <motion.a
@@ -131,6 +139,7 @@ export default function Hero() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="group flex items-center gap-3 rounded-xl bg-[#19D1C2] px-8 py-4 font-bold text-gray-900 shadow-xl shadow-[#19D1C2]/20 transition-all duration-300 hover:bg-[#19D1C2]/90"
+                  aria-label="Ver projetos de desenvolvimento web"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -151,6 +160,7 @@ export default function Hero() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="group flex items-center gap-3 rounded-xl border-2 border-[#19D1C2] bg-transparent px-8 py-4 font-bold text-[#19D1C2] transition-all duration-300 hover:bg-[#19D1C2]/10"
+                  aria-label="Entrar em contato para projetos de desenvolvimento"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -198,7 +208,7 @@ export default function Hero() {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-20 w-20 text-gray-900"
+                      className="h-20 w-20 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

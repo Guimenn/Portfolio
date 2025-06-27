@@ -1,0 +1,25 @@
+{
+  "name": "Guilherme Men Portfolio",
+  "short_name": "Guimen Portfolio",
+  "description": "Portfolio profissional de Guilherme Men (Guimen), desenvolvedor full stack",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#19D1C2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity", "technology"],
+  "lang": "pt-BR",
+  "dir": "ltr"
+} 

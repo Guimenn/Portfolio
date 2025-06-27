@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://guimen.dev/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow specific paths (if needed)
+# Disallow: /api/
+# Disallow: /admin/
+
+# Allow all important pages
+Allow: /about
+Allow: /projects
+Allow: /contact
+Allow: /technologies
+Allow: /competencies 
