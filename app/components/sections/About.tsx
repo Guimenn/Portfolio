@@ -36,7 +36,7 @@ const SOCIAL_LINKS: SocialLink[] = [
     ariaLabel: "Visite meu perfil no GitHub"
   },
   {
-    link: "https://www.instagram.com/guimen/",
+    link: "https://www.instagram.com/guim.enn/",
     name: "Instagram",
     icon: "/img/icons8-instagram.svg",
     class: "insta",
