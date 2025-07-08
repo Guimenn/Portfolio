@@ -38,7 +38,7 @@ export default function Tecnologias() {
     <>
       <section
         id="tech"
-        className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950 px-6 py-16"
+        className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950 px-4 py-12 sm:px-6 sm:py-16"
       >
         {/* Elementos de fundo decorativos semelhantes à Hero section */}
         <div className="absolute top-0 left-0 h-full w-full">
@@ -47,16 +47,16 @@ export default function Tecnologias() {
         </div>
 
         <div className="z-10 container mx-auto">
-          <div className="technology flex flex-col items-center justify-center gap-8">
-            <h1 className="mb-8 bg-gradient-to-r from-[#19D1C2] to-[#087e74] bg-clip-text text-3xl font-extra-bold text-transparent md:text-4xl">
+          <div className="flex flex-col items-center justify-center gap-6 sm:gap-8">
+            <h1 className="mb-6 sm:mb-8 bg-gradient-to-r from-[#19D1C2] to-[#087e74] bg-clip-text text-3xl font-extra-bold text-transparent sm:text-4xl md:text-5xl text-center px-4">
               TECNOLOGIAS COM AS QUAIS TRABALHO
             </h1>
 
             <div
-              className="w-full rounded-2xl border border-gray-700/50 bg-gray-900/70 p-8 shadow-2xl backdrop-blur-xl"
+              className="w-full rounded-2xl border border-gray-700/50 bg-gray-900/70 p-4 sm:p-6 md:p-8 shadow-2xl backdrop-blur-xl"
               id="tecnologias-container"
             >
-              <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              <div className="grid grid-cols-2 gap-4 sm:gap-4 md:gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
                 {tecnologias.map((tech, index) => (
                   <motion.div
                     key={index}
@@ -65,18 +65,18 @@ export default function Tecnologias() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-50px" }}
                     variants={cardVariants}
-                    className="flex transform flex-col items-center justify-center gap-3 rounded-xl border border-gray-800 bg-gray-900/80 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#19D1C2]/50 hover:shadow-lg hover:shadow-[#19D1C2]/20"
+                    className="flex transform flex-col items-center justify-center gap-3 sm:gap-3 rounded-xl border border-gray-800 bg-gray-900/80 p-4 sm:p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#19D1C2]/50 hover:shadow-lg hover:shadow-[#19D1C2]/20 min-h-[100px] sm:min-h-[120px]"
                   >
-                    <div className="relative flex h-12 w-12 items-center justify-center">
+                    <div className="relative flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center">
                       <Image
                         src={tech.imagem}
                         alt={tech.nome}
-                        width={48}
-                        height={48}
-                        className="object-contain transition-all duration-300 hover:scale-110"
+                        width={56}
+                        height={56}
+                        className="h-full w-full object-contain transition-all duration-300 hover:scale-110"
                       />
                     </div>
-                    <p className="text-sm font-medium text-gray-200">
+                    <p className="text-sm sm:text-sm font-medium text-gray-200 text-center leading-tight">
                       {tech.nome}
                     </p>
                   </motion.div>
