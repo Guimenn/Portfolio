@@ -4,9 +4,38 @@ import ProjectItem from "../ProjectItem";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import styles from "../styles/Projects.module.css";
+
 const projectsData = [
   {
     id: 1,
+    title: "Zelos",
+    description: "Sistema de gerenciamento de Ordens de Serviço desenvolvido para o SENAI, focado em otimizar o fluxo de trabalho de manutenção e atendimento técnico. A plataforma oferece controle completo do ciclo de vida das OS, com interface intuitiva, acompanhamento em tempo real e sistema robusto de gestão. Projeto composto por front-end e back-end dedicados.",
+    imageUrl: "/img/senai.png",
+    links: [
+      { label: "Repositório Principal", url: "https://github.com/Guimenn/Zelos-Senai" },
+      { label: "Front-end", url: "https://github.com/Guimenn/Zelos-Senai/tree/main/sistema-senai" },
+      { label: "Back-end (API)", url: "https://github.com/Guimenn/Zelos-Senai/tree/main/backend" }
+    ],
+    demoLink: "https://zelos-senai.vercel.app",
+    technologies: [
+      "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express", "Prisma ORM", "Supabase", "Vercel"
+    ],
+    features: [
+      "Gerenciamento completo de Ordens de Serviço (OS)",
+      "Abertura, edição e acompanhamento de OS em tempo real",
+      "Interface moderna e responsiva",
+      "Sistema de status e priorização",
+      "Histórico e rastreamento de operações",
+      "Geração de relatórios e dashboards",
+      "Back-end dedicado (API RESTful)",
+      "Gerenciamento de técnicos, clientes e equipamentos",
+      "Integração com banco de dados PostgreSQL",
+      "Autenticação e segurança"
+    ],
+    year: 2025
+  },
+  {
+    id: 2,
     title: "Studdy",
     description: "Plataforma educacional de simulados online, desenvolvida para auxiliar estudantes na preparação para exames e avaliações. Possui interface intuitiva, simulados, feedback imediato, sistema de pontuação e resultados. Projeto composto por front-end e back-end dedicados.",
     imageUrl: "/img/studdy.png",
@@ -32,7 +61,7 @@ const projectsData = [
     year: 2025
   },
   {
-    id: 2,
+    id: 3,
     title: "Thornfield",
     description: "Site elegante para uma marca premium de whisky, apresentando uma experiência imersiva com design sofisticado. Desenvolvido com foco na história da destilaria, processo de fabricação e catálogo de produtos, oferecendo uma jornada visual que reflete a tradição e qualidade da marca.",
     imageUrl: "/img/Thornfield.png",
@@ -41,17 +70,6 @@ const projectsData = [
     technologies: ["Next.js", "Tailwind CSS", "Flowbite React", "TypeScript", "Firebase", "NodeJS"],
     features: ["Arquitetura escalável", "Componentes pré-configurados", "Tipagem estática com TypeScript", "Sistema de design com Tailwind CSS"],
     year: 2025
-  },
-  {
-    id: 3,
-    title: "CursosOnline",
-    description: "Plataforma educacional completa para cursos online, oferecendo ambiente interativo para estudantes e professores. Inclui sistema de matrícula, biblioteca de conteúdos, avaliações automáticas e certificação digital, tudo com interface intuitiva e responsiva para acesso em qualquer dispositivo.",
-    imageUrl: "/img/estudomind.png",
-    link: "https://github.com/Guimenn/CursosOnline",
-    demoLink: null,
-    technologies: ["HTML", "CSS", "JavaScript", "PHP"],
-    features: ["Gestão de conteúdo educacional", "Painel administrativo", "Interface acessível conforme WCAG"],
-    year: 2024
   }
 
 ];
@@ -145,7 +163,7 @@ export default function Projects() {
               backgroundColor: `rgba(25, 209, 194, ${0.1 + (index * 0.1)})`,
               padding: `${1 + index}rem`,
               borderRadius: "50%",
-              zIndex: 1 
+              zIndex: 1
             }}
           >
             <span className="text-[#19D1C2] font-medium whitespace-nowrap">{tech}</span>

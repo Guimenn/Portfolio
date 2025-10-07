@@ -30,6 +30,39 @@ body {
   padding: 0;
 }
 
+/* Scrollbar personalizada - Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #19D1C2 0%, #087e74 100%);
+  border-radius: 10px;
+  border: 2px solid #0f172a;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #1de9d8 0%, #0a9a8c 100%);
+  box-shadow: 0 0 10px rgba(25, 209, 194, 0.5);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #15b3a6 0%, #065f57 100%);
+}
+
+/* Scrollbar para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #19D1C2 #0f172a;
+}
+
 .neon-glow {
   text-shadow:
     0 0 5px #19d1c2,

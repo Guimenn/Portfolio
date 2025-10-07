@@ -7,7 +7,11 @@ module.exports = {
       "./node_modules/flowbite/**/*.js"
     ],
     theme: {
-      extend: {},
+      extend: {
+        animation: {
+          'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        },
+      },
     },
     plugins: [
       require('flowbite-react/plugin')

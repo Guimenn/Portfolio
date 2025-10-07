@@ -7,16 +7,17 @@ export default function Tecnologias() {
   const tecnologias = [
     { nome: "HTML", imagem: "/img/html.png" },
     { nome: "CSS", imagem: "/img/css-3.png" },
-    { nome: "Bootstrap", imagem: "/img/bootstrap.png" },
+
     { nome: "Tailwind CSS", imagem: "/img/icons8-tailwind-css.svg" },
     { nome: "NextJS", imagem: "/img/icons8-nextjs.svg" },
-    { nome: "ReactJS", imagem: "/img/icons8-react.svg" },
+    { nome: "React Native", imagem: "/img/icons8-react.svg" },
     { nome: "NodeJS", imagem: "/img/icons8-node.png" },
     { nome: "JavaScript", imagem: "/img/js.png" },
     { nome: "PostgreSQL", imagem: "/img/icons8-postgreesql.png" },
     { nome: "MySQL", imagem: "/img/mysql.png" },
     { nome: "PHP", imagem: "/img/icons8-php.svg" },
     { nome: "Git", imagem: "/img/icons8-git.svg" },
+    { nome: "Docker", imagem: "/img/icons8-docker-50.png"}
 
   ];
 
