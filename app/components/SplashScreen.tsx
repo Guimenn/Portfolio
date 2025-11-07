@@ -29,6 +29,9 @@ export default function SplashScreen() {
       if (splashScreen) {
         splashScreen.classList.add("up");
       }
+      
+      // Libera o scroll do body
+      document.body.classList.add("loaded");
 
       // Delay showing content until splash screen animation is partway through
       setTimeout(() => {

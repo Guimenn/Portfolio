@@ -1,7 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Float } from "@react-three/drei";
+import * as THREE from "three";
+import FloatingBackground from "../FloatingBackground";
 
 export default function Hero() {
   const typewriterRef = useRef<HTMLHeadingElement>(null);
@@ -53,8 +57,12 @@ export default function Hero() {
     };
   }, []);
 
+  
+
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950 px-6 py-16">
+    <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950 px-6 py-16">
+
+
       {/* Elementos de fundo decorativos aprimorados */}
       <div className="absolute top-0 left-0 h-full w-full">
         <div className="animate-pulse-slow absolute top-20 left-10 h-72 w-72 rounded-full bg-[#19D1C2]/15 blur-3xl filter"></div>
@@ -71,55 +79,74 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-10 lg:col-span-3"
           >
-            {/* Card com foto e nome - redesenhado */}
+            {/* Card com foto e nome - hover suave e elegante */}
             <motion.div
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="rounded-2xl border border-gray-700/50 bg-gray-900/70 p-8 shadow-2xl backdrop-blur-xl"
+              whileHover={{
+                scale: 1.02,
+                y: -5
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="group relative rounded-2xl border-2 border-gray-700/50 bg-gray-900/80 p-8 shadow-2xl backdrop-blur-xl hover:border-[#19D1C2]/50 hover:shadow-[#19D1C2]/20 transition-all duration-300"
             >
               <div className="flex flex-col items-center gap-8 sm:flex-row">
-                <div className="relative h-32 w-32 transform overflow-hidden rounded-full border-4 border-[#19D1C2] shadow-lg shadow-[#19D1C2]/30 transition-all duration-500 hover:rotate-6">
+                <div className="relative h-32 w-32 transform overflow-hidden rounded-full border-4 border-[#19D1C2] shadow-lg shadow-[#19D1C2]/30 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
                   <Image
                     src="/img/euu.png"
                     alt="Guilherme Men - Desenvolvedor Full Stack"
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
                     priority
                   />
+                  {/* Anel de luz animado */}
+                  <div className="absolute inset-0 rounded-full border-4 border-[#19D1C2]/30 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="flex flex-col items-center sm:items-start">
                   <div className="mb-2 flex items-center gap-3">
-                    <span className="inline-block h-3 w-3 animate-pulse rounded-full bg-[#19D1C2]"></span>
+                    <span className="inline-block h-3 w-3 animate-ping rounded-full bg-[#19D1C2]"></span>
                     <span className="text-sm font-medium tracking-wider text-gray-300 uppercase">
                       Desenvolvedor Full Stack
                     </span>
                   </div>
                   <h1
                     ref={typewriterRef}
-                    className="min-h-[48px] font-mono text-3xl font-bold text-[#19D1C2] md:text-4xl"
+                    className="min-h-[48px] font-mono text-3xl font-bold text-[#19D1C2] md:text-4xl group-hover:text-[#19D1C2]/90 transition-colors duration-300"
                   ></h1>
                 </div>
               </div>
             </motion.div>
 
-            {/* Título principal - redesenhado */}
+            {/* Título principal - design clean e moderno */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="rounded-2xl border border-gray-700/50 bg-gray-900/70 p-10 shadow-2xl backdrop-blur-xl"
+              className="group rounded-2xl border-2 border-gray-700/50 bg-gray-900/80 p-10 shadow-2xl backdrop-blur-xl hover:border-[#19D1C2]/50 hover:shadow-[#19D1C2]/20 transition-all duration-300"
             >
               <h1 className="mb-8 text-4xl leading-tight font-extrabold text-white md:text-6xl">
                 TRANSFORME{" "}
-                <span className="group relative inline-block text-[#19D1C2]">
+                <motion.span
+                  className="group relative inline-block text-[#19D1C2] hover:text-[#19D1C2]/90 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                >
                   SONHOS
-                  <span className="absolute bottom-0 left-0 h-1 w-0 rounded-full bg-[#19D1C2]/70 transition-all duration-700 group-hover:w-full"></span>
-                </span>{" "}
+                  <motion.span
+                    className="absolute -bottom-2 left-0 h-1 w-0 rounded-full bg-[#19D1C2] group-hover:w-full transition-all duration-700"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                  ></motion.span>
+                </motion.span>{" "}
                 EM{" "}
-                <span className="group relative inline-block text-[#19D1C2]">
+                <motion.span
+                  className="group relative inline-block text-[#19D1C2] hover:text-[#19D1C2]/90 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                >
                   REALIDADE
-                  <span className="absolute bottom-0 left-0 h-1 w-0 rounded-full bg-[#19D1C2]/70 transition-all duration-700 group-hover:w-full"></span>
-                </span>
+                  <motion.span
+                    className="absolute -bottom-2 left-0 h-1 w-0 rounded-full bg-[#19D1C2] group-hover:w-full transition-all duration-700"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                  ></motion.span>
+                </motion.span>
               </h1>
               <p className="mb-10 text-xl leading-relaxed font-medium text-gray-300 md:text-2xl">
                 UNINDO TECNOLOGIA E CRIATIVIDADE PARA CRIAR SOLUÇÕES EXTRAORDINÁRIAS
@@ -136,9 +163,9 @@ export default function Hero() {
               <div className="mt-12 flex flex-wrap gap-6">
                 <motion.a
                   href="#projeto"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group flex items-center gap-3 rounded-xl bg-[#19D1C2] px-8 py-4 font-bold text-gray-900 shadow-xl shadow-[#19D1C2]/20 transition-all duration-300 hover:bg-[#19D1C2]/90"
+                  className="group relative flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#19D1C2] to-[#087e74] px-8 py-4 font-bold text-gray-900 shadow-xl shadow-[#19D1C2]/20 transition-all duration-300 hover:shadow-2xl hover:shadow-[#19D1C2]/40"
                   aria-label="Ver projetos de desenvolvimento web"
                 >
                   <svg
@@ -154,12 +181,18 @@ export default function Hero() {
                     />
                   </svg>
                   Explorar Projetos
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: '100%' }}
+                    transition={{ duration: 0.6 }}
+                  />
                 </motion.a>
                 <motion.a
                   href="#contato"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group flex items-center gap-3 rounded-xl border-2 border-[#19D1C2] bg-transparent px-8 py-4 font-bold text-[#19D1C2] transition-all duration-300 hover:bg-[#19D1C2]/10"
+                  className="group flex items-center gap-3 rounded-xl border-2 border-[#19D1C2] bg-transparent px-8 py-4 font-bold text-[#19D1C2] transition-all duration-300 hover:bg-[#19D1C2]/10 hover:border-[#19D1C2]/80"
                   aria-label="Entrar em contato para projetos de desenvolvimento"
                 >
                   <svg
@@ -177,7 +210,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Coluna secundária - 2/5 - redesenhada */}
+          {/* Coluna secundária - 2/5 - com elementos 3D */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 50 }}
@@ -188,7 +221,7 @@ export default function Hero() {
               {/* Gradiente decorativo aprimorado */}
               <div className="absolute inset-0 z-10 bg-gradient-to-tr from-gray-900/90 via-gray-900/70 to-transparent"></div>
 
-              {/* Elemento central animado - redesenhado */}
+              {/* Elemento central animado - agora com mais profundidade */}
               <div className="absolute inset-0 z-20 flex items-center justify-center">
                 <motion.div
                   animate={{ rotate: 360 }}
@@ -202,13 +235,13 @@ export default function Hero() {
                   <div className="absolute inset-0 h-40 w-40 animate-ping rounded-full bg-[#19D1C2]/20 opacity-30"></div>
                   <div className="absolute inset-0 h-40 w-40 animate-pulse rounded-full bg-[#19D1C2]/40"></div>
                   <motion.div
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.1, rotateY: 180 }}
                     transition={{ type: "spring", stiffness: 400 }}
-                    className="relative flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br from-[#19D1C2] to-[#19D1C2]/80 shadow-lg shadow-[#19D1C2]/30"
+                    className="relative flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br from-[#19D1C2] to-[#087e74] shadow-lg shadow-[#19D1C2]/30 hover:shadow-[#19D1C2]/50 transition-all duration-500 cursor-none"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-20 w-20 text-white"
+                      className="h-20 w-20 text-white transition-transform duration-500 hover:rotate-180"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -224,7 +257,7 @@ export default function Hero() {
                 </motion.div>
               </div>
 
-              {/* Linhas de código decorativas - redesenhadas */}
+              {/* Linhas de código decorativas - com efeito de digitação */}
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -232,45 +265,32 @@ export default function Hero() {
                 className="absolute right-8 bottom-8 left-8 overflow-hidden rounded-xl border border-gray-700/50 bg-gray-900/90 p-6 font-mono text-sm text-[#19D1C2] shadow-xl backdrop-blur-md"
               >
                 <div className="space-y-2">
-                  <p>
-                    const{" "}
-                    <span className="font-semibold text-purple-400">
-                      developer
-                    </span>{" "}
-                    = {`{`}
+                  <p className="relative overflow-hidden">
+                    <span className="animate-pulse">const </span>
+                    <span className="font-semibold text-purple-400">developer</span>
+                    {" = {"}
                   </p>
-                  <p className="pl-5">
-                    name:{" "}
-                    <span className="text-green-400">
-                      &quot;Guilherme Vidichosqui Men&quot;
-                    </span>
-                    ,
+                  <p className="pl-5 relative overflow-hidden">
+                    name: <span className="text-green-400">"Guilherme Vidichosqui Men"</span>,
                   </p>
-                  <p className="pl-5">
+                  <p className="pl-5 relative overflow-hidden">
                     skills: [
-                    <span className="text-yellow-400">&quot;Frontend&quot;</span>,{" "}
-                    <span className="text-yellow-400">&quot;Backend&quot;</span>,{" "}
-                    <span className="text-yellow-400">&quot;UI/UX&quot;</span>,{" "}
-                    <span className="text-yellow-400">&quot;Web Performance&quot;</span>],
+                    <span className="text-yellow-400">"Frontend"</span>,{" "}
+                    <span className="text-yellow-400">"Backend"</span>,{" "}
+                    <span className="text-yellow-400">"UI/UX"</span>,{" "}
+                    <span className="text-yellow-400">"Web Performance"</span>],
                   </p>
-                  <p className="pl-5">
-                    specialization:{" "}
-                    <span className="text-green-400">
-                      &quot;Arquitetura de soluções web escaláveis&quot;
-                    </span>
-                    ,
+                  <p className="pl-5 relative overflow-hidden">
+                    specialization: <span className="text-green-400">"Arquitetura de soluções web escaláveis"</span>,
                   </p>
-                  <p className="pl-5">
-                    objective:{" "}
-                    <span className="text-blue-400">
-                      &quot;Desenvolver sistemas de alto desempenho&quot;
-                    </span>
+                  <p className="pl-5 relative overflow-hidden">
+                    objective: <span className="text-blue-400">"Desenvolver sistemas de alto desempenho"</span>
                   </p>
-                  <p>{`}`};</p>
+                  <p>{"}"}</p>
                 </div>
               </motion.div>
 
-              {/* Elementos decorativos flutuantes - redesenhados */}
+              {/* Elementos decorativos flutuantes - com mais interatividade */}
               <motion.div
                 animate={{ rotate: [12, -12, 12], y: [0, -10, 0] }}
                 transition={{
@@ -278,7 +298,8 @@ export default function Hero() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute top-10 right-10 flex h-20 w-20 items-center justify-center rounded-lg border border-purple-500/40 bg-purple-600/30 shadow-lg backdrop-blur-sm"
+                whileHover={{ scale: 1.2, rotate: 0 }}
+                className="absolute top-10 right-10 flex h-20 w-20 cursor-none items-center justify-center rounded-lg border border-purple-500/40 bg-purple-600/30 shadow-lg backdrop-blur-sm transition-all duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -303,7 +324,8 @@ export default function Hero() {
                   ease: "easeInOut",
                   delay: 0.5,
                 }}
-                className="absolute top-32 left-10 flex h-16 w-16 items-center justify-center rounded-lg border border-blue-500/40 bg-blue-600/30 shadow-lg backdrop-blur-sm"
+                whileHover={{ scale: 1.2, rotate: 0 }}
+                className="absolute top-32 left-10 flex h-16 w-16 cursor-none items-center justify-center rounded-lg border border-blue-500/40 bg-blue-600/30 shadow-lg backdrop-blur-sm transition-all duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -328,7 +350,8 @@ export default function Hero() {
                   ease: "easeInOut",
                   delay: 1,
                 }}
-                className="absolute top-20 left-1/2 flex h-14 w-14 items-center justify-center rounded-lg border border-pink-500/40 bg-pink-600/30 shadow-lg backdrop-blur-sm"
+                whileHover={{ scale: 1.2, rotate: 0 }}
+                className="absolute top-20 left-1/2 flex h-14 w-14 cursor-none -translate-x-1/2 items-center justify-center rounded-lg border border-pink-500/40 bg-pink-600/30 shadow-lg backdrop-blur-sm transition-all duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

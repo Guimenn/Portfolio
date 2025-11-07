@@ -97,11 +97,6 @@ export default function About() {
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950 px-4 py-16 sm:px-6 lg:px-8"
       aria-labelledby="about-title"
     >
-      {/* Background elements */}
-      <div className="absolute top-0 left-0 h-full w-full" aria-hidden="true">
-        <div className="animate-pulse-slow absolute top-20 left-10 h-72 w-72 rounded-full bg-[#19D1C2]/15 blur-3xl filter"></div>
-        <div className="animate-pulse-slow absolute right-10 bottom-20 h-96 w-96 rounded-full bg-[#19D1C2]/10 blur-3xl filter"></div>
-      </div>
 
       <div className="z-10 container mx-auto">
         <motion.div

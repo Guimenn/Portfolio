@@ -169,7 +169,8 @@ export default function Contact() {
       id="contato"
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950 px-6 py-16"
     >
-      {/* Background elements */}
+  
+
       <div className="absolute top-0 left-0 h-full w-full">
         <div className="animate-pulse-slow absolute top-20 left-10 h-72 w-72 rounded-full bg-[#19D1C2]/15 blur-3xl filter"></div>
         <div className="animate-pulse-slow absolute right-10 bottom-20 h-96 w-96 rounded-full bg-purple-600/15 blur-3xl filter"></div>
@@ -184,10 +185,12 @@ export default function Contact() {
           className="mb-12 text-center"
         >
           <h2 className="text-4xl font-bold text-white md:text-5xl">
-            Entre em <span className="text-[#19D1C2]">Contato</span>
+            Bora <span className="text-[#19D1C2]">Criar Algo Incrível</span>?
           </h2>
-          <p className="mt-4 text-lg text-gray-300">
-            Vamos trabalhar juntos? Estou sempre aberto a novos projetos e colaborações
+          <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+            Tá precisando de um site que <span className="text-[#19D1C2] font-semibold">impressiona</span>? 
+            Uma aplicação que <span className="text-[#19D1C2] font-semibold">funciona de verdade</span>? 
+            Vamos conversar e transformar sua ideia em realidade! 🚀
           </p>
         </motion.div>
 
@@ -200,8 +203,8 @@ export default function Contact() {
             viewport={{ once: true }}
             className="space-y-6 lg:col-span-1"
           >
-            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/70 p-6 shadow-2xl backdrop-blur-xl">
-              <h3 className="mb-6 text-xl font-bold text-white">Informações de Contato</h3>
+            <div className="rounded-2xl border-2 border-gray-700/50 bg-gray-900/80 p-6 shadow-2xl backdrop-blur-xl hover:border-[#19D1C2]/50 transition-all duration-300">
+              <h3 className="mb-6 text-xl font-bold text-white">Me Chama Aqui 👋</h3>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <motion.a
@@ -213,32 +216,35 @@ export default function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    whileHover={{ x: 5 }}
-                    className="flex items-center gap-4 rounded-lg border border-gray-700/30 bg-gray-800/30 p-4 transition-all duration-300 hover:border-[#19D1C2]/50 hover:bg-gray-800/50"
+                    whileHover={{ x: 5, scale: 1.02 }}
+                    className="flex items-center gap-4 rounded-lg border-2 border-gray-700/30 bg-gray-800/40 p-4 transition-all duration-300 hover:border-[#19D1C2]/50 hover:bg-gray-800/60 hover:shadow-lg hover:shadow-[#19D1C2]/20"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#19D1C2]/10 text-[#19D1C2]">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#19D1C2]/20 text-[#19D1C2] border border-[#19D1C2]/30">
                       {info.icon}
                     </div>
                     <div className="flex-1">
                       <p className="text-sm text-gray-400">{info.label}</p>
-                      <p className="text-white font-medium">{info.value}</p>
+                      <p className="text-white font-semibold">{info.value}</p>
                     </div>
                   </motion.a>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/70 p-6 shadow-2xl backdrop-blur-xl">
+            <div className="rounded-2xl border-2 border-gray-700/50 bg-gradient-to-br from-green-500/10 to-gray-900/80 p-6 shadow-2xl backdrop-blur-xl">
               <h3 className="mb-4 text-lg font-bold text-white">Disponibilidade</h3>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 mb-4">
                 <div className="relative flex h-3 w-3">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
                 </div>
-                <p className="text-gray-300">Disponível para novos projetos</p>
+                <p className="text-white font-semibold">Online e pronto pra começar!</p>
               </div>
-              <p className="mt-4 text-sm text-gray-400">
-                Respondo geralmente em até 24 horas
+              <p className="text-sm text-gray-300 mb-2">
+                 Respondo super rápido (geralmente em 24h)
+              </p>
+              <p className="text-sm text-gray-300">
+                 Aceito projetos de todos os tamanhos
               </p>
             </div>
           </motion.div>
@@ -251,11 +257,13 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/70 p-8 shadow-2xl backdrop-blur-xl">
+            <div className="rounded-2xl border-2 border-gray-700/50 bg-gray-900/80 p-8 shadow-2xl backdrop-blur-xl hover:border-[#19D1C2]/50 transition-all duration-300">
+              <h3 className="text-2xl font-bold text-white mb-2">Fala comigo!</h3>
+              <p className="text-gray-300 mb-6">Conta tudo sobre seu projeto. Quanto mais detalhes, melhor!</p>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300">
-                    Nome <span className="text-red-400">*</span>
+                    Seu Nome <span className="text-red-400">*</span>
                   </label>
                   <input
                     type="text"
@@ -330,7 +338,7 @@ export default function Contact() {
                       ? 'border-red-500 bg-red-500/10 focus:border-red-500 focus:ring-red-500/50'
                       : 'border-gray-700/50 bg-gray-800/50 focus:border-[#19D1C2] focus:ring-[#19D1C2]/50'
                       }`}
-                    placeholder="Descreva seu projeto ou ideia..."
+                    placeholder="Me conta tudo: o que você precisa, prazos, orçamento... Pode falar à vontade!"
                   />
                   {errors.message && touched.message && (
                     <motion.p
@@ -348,7 +356,7 @@ export default function Contact() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isLoading}
-                  className="relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[#19D1C2] to-[#15b3a6] px-6 py-4 font-bold text-white shadow-xl shadow-[#19D1C2]/20 transition-all duration-300 hover:shadow-2xl hover:shadow-[#19D1C2]/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[#19D1C2] to-[#15b3a6] px-8 py-4 font-bold text-gray-900 text-lg shadow-xl shadow-[#19D1C2]/30 transition-all duration-300 hover:shadow-2xl hover:shadow-[#19D1C2]/50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {isLoading ? (
@@ -357,11 +365,11 @@ export default function Contact() {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Enviando...
+                        Enviando sua mensagem...
                       </>
                     ) : (
                       <>
-                        Enviar Mensagem
+                        Bora Conversar!
                         <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>

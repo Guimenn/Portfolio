@@ -166,7 +166,7 @@ export default function Competencias() {
               variants={cardVariants}
               whileHover={{ y: -10, scale: 1.02 }}
               onClick={() => setActiveTab(index)}
-              className={`group relative cursor-pointer overflow-hidden rounded-2xl border transition-all duration-500 ${activeTab === index
+              className={`group relative cursor-none overflow-hidden rounded-2xl border transition-all duration-500 ${activeTab === index
                 ? "border-[#19D1C2] bg-gradient-to-br from-gray-800/90 to-gray-900/90 shadow-2xl shadow-[#19D1C2]/20"
                 : "border-gray-700/50 bg-gray-800/50 hover:border-gray-600 hover:bg-gray-800/70"
                 }`}

@@ -1,10 +1,26 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import Hero from './components/sections/Hero';
 import Technologies from './components/sections/Technologies';
 import Competencias from './components/sections/Competencias';
-import Projects from './components/sections/Projects';
-import About from './components/sections/About';
-import Contact from './components/sections/Contact';
+import ClientWrapper from './components/ClientWrapper';
+import Footer from './components/Footer';
+
+// Lazy load componentes pesados
+const Projects = dynamic(() => import('./components/sections/Projects'), {
+  loading: () => <div className="min-h-screen" />,
+});
+const About = dynamic(() => import('./components/sections/About'), {
+  loading: () => <div className="min-h-screen" />,
+});
+const Contact = dynamic(() => import('./components/sections/Contact'), {
+  loading: () => <div className="min-h-screen" />,
+});
+const CTA = dynamic(() => import('./components/sections/CTA'), {
+  loading: () => <div className="min-h-screen" />,
+});
+// CursorComponent já é um client component, não precisa de ssr: false
+const CursorComponent = dynamic(() => import('./components/Cursor'));
 
 export const metadata: Metadata = {
   title: "Guilherme Men (Guimen) - Desenvolvedor Full Stack | guimen.dev",
@@ -56,13 +72,18 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen">
-      <Hero />
-      <Technologies />
-      <Competencias />
-      <Projects />
-      <About />
-      <Contact />
-    </main>
+    <ClientWrapper>
+      <main className="flex flex-col min-h-screen">
+        <CursorComponent />
+        <Hero />
+        <Technologies />
+        <Competencias />
+        <Projects />
+        <About />
+        <CTA />
+        <Contact />
+      </main>
+      <Footer />  
+    </ClientWrapper>
   );
 }

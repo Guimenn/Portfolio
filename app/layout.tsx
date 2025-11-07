@@ -1,11 +1,6 @@
 import { ThemeModeScript } from "flowbite-react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import { Toaster } from 'react-hot-toast';
-import SplashScreen from './components/SplashScreen';
 import "./globals.css";
 
 const inter = Inter({
@@ -104,6 +99,7 @@ export default function RootLayout({
         <meta name="copyright" content="Guilherme Men" />
         <meta name="application-name" content="Guilherme Men Portfolio" />
         <meta name="apple-mobile-web-app-title" content="Guimen Portfolio" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
@@ -177,14 +173,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
-        <SplashScreen />
-        <div className="main-content">
-          <Navbar />
           {children}
-          <Footer />
-        </div>
-        <Toaster position="top-right" />
-        <Analytics />
       </body>
     </html>
   );
