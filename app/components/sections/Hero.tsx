@@ -1,11 +1,7 @@
 "use client";
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Float } from "@react-three/drei";
-import * as THREE from "three";
-import FloatingBackground from "../FloatingBackground";
 
 export default function Hero() {
   const typewriterRef = useRef<HTMLHeadingElement>(null);
@@ -57,7 +53,7 @@ export default function Hero() {
     };
   }, []);
 
-  
+
 
   return (
     <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950 px-6 py-16">
@@ -94,6 +90,7 @@ export default function Hero() {
                     src="/img/euu.png"
                     alt="Guilherme Men - Desenvolvedor Full Stack"
                     fill
+                    sizes="128px"
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
                     priority
                   />
@@ -181,12 +178,6 @@ export default function Hero() {
                     />
                   </svg>
                   Explorar Projetos
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl"
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: '100%' }}
-                    transition={{ duration: 0.6 }}
-                  />
                 </motion.a>
                 <motion.a
                   href="#contato"
@@ -271,20 +262,20 @@ export default function Hero() {
                     {" = {"}
                   </p>
                   <p className="pl-5 relative overflow-hidden">
-                    name: <span className="text-green-400">"Guilherme Vidichosqui Men"</span>,
+                    name: <span className="text-green-400">&quot;Guilherme Vidichosqui Men&quot;</span>,
                   </p>
                   <p className="pl-5 relative overflow-hidden">
                     skills: [
-                    <span className="text-yellow-400">"Frontend"</span>,{" "}
-                    <span className="text-yellow-400">"Backend"</span>,{" "}
-                    <span className="text-yellow-400">"UI/UX"</span>,{" "}
-                    <span className="text-yellow-400">"Web Performance"</span>],
+                    <span className="text-yellow-400">&quot;Frontend&quot;</span>,{" "}
+                    <span className="text-yellow-400">&quot;Backend&quot;</span>,{" "}
+                    <span className="text-yellow-400">&quot;UI/UX&quot;</span>,{" "}
+                    <span className="text-yellow-400">&quot;Web Performance&quot;</span>],
                   </p>
                   <p className="pl-5 relative overflow-hidden">
-                    specialization: <span className="text-green-400">"Arquitetura de soluções web escaláveis"</span>,
+                    specialization: <span className="text-green-400">&quot;Arquitetura de soluções web escaláveis&quot;</span>,
                   </p>
                   <p className="pl-5 relative overflow-hidden">
-                    objective: <span className="text-blue-400">"Desenvolver sistemas de alto desempenho"</span>
+                    objective: <span className="text-blue-400">&quot;Desenvolver sistemas de alto desempenho&quot;</span>
                   </p>
                   <p>{"}"}</p>
                 </div>

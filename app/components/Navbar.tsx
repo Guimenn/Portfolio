@@ -13,23 +13,24 @@ interface NavItem {
   subItems?: string[];
 }
 
-export default function Navbar() {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState('home');
   const [isVisible, setIsVisible] = useState(true);
   const [showSubmenu, setShowSubmenu] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
-  const [mounted, setMounted] = useState(false);
   const navRef = useRef<HTMLElement>(null);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-
-  // Scroll progress
+  // Scroll progress - usar scroll da página em vez de target específico para evitar problemas de SSR
   const { scrollYProgress } = useScroll({
-    target: navRef,
-    offset: ["start start", "end start"]
+    layoutEffect: false
   });
 
   const navBackground = useTransform(
@@ -45,12 +46,6 @@ export default function Navbar() {
   );
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-
     const handleScroll = () => {
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
@@ -77,7 +72,7 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [mounted]);
+  }, []);
 
   // Detect active section
   useEffect(() => {
@@ -231,8 +226,13 @@ export default function Navbar() {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
-        backgroundColor: scrolled ? navBackground : 'transparent',
-        backdropFilter: scrolled ? navBlur : 'blur(0px)',
+        ...(mounted && scrolled ? {
+          backgroundColor: navBackground,
+          backdropFilter: navBlur,
+        } : {
+          backgroundColor: scrolled ? 'rgba(3, 7, 18, 0.1)' : 'transparent',
+          backdropFilter: 'blur(0px)',
+        }),
 
       }}
     >
@@ -670,7 +670,7 @@ export default function Navbar() {
         <motion.div
           className="absolute inset-0 w-full rounded-full bg-gradient-to-b from-[#19D1C2] to-[#087e74] shadow-lg"
           style={{
-            scaleY: scrollYProgress,
+            scaleY: mounted ? scrollYProgress : 0,
             originY: 1
           }}
           transition={{
@@ -731,4 +731,6 @@ export default function Navbar() {
       </motion.div>
     </motion.nav>
   );
-} 
+}
+
+export default Navbar; 

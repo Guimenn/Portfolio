@@ -7,6 +7,9 @@ export default function SplashScreen() {
   const [particles, setParticles] = useState<Array<{ id: number; style: React.CSSProperties }>>([]);
 
   useEffect(() => {
+    // Garantir que estamos no cliente
+    if (typeof window === 'undefined') return;
+
     // Create particles
     const newParticles = Array.from({ length: 50 }, (_, i) => ({
       id: i,
@@ -20,39 +23,46 @@ export default function SplashScreen() {
     }));
     setParticles(newParticles);
 
-    const splashScreen = document.querySelector(".splash-screen") as HTMLElement | null;
-    const content = document.querySelector(".main-content") as HTMLElement | null; // Target the main content wrapper
+    // Aguardar um pouco para garantir que a hidratação aconteceu
+    const initTimer = setTimeout(() => {
+      const splashScreen = document.querySelector(".splash-screen") as HTMLElement | null;
+      const content = document.querySelector(".main-content") as HTMLElement | null;
 
-    if (!splashScreen || !content) return;
+      if (!splashScreen || !content) return;
 
-    const hideSplashScreen = () => {
-      if (splashScreen) {
-        splashScreen.classList.add("up");
-      }
-      
-      // Libera o scroll do body
-      document.body.classList.add("loaded");
-
-      // Delay showing content until splash screen animation is partway through
-      setTimeout(() => {
-        if (content) {
-            content.classList.add("show");
+      const hideSplashScreen = () => {
+        if (splashScreen) {
+          splashScreen.classList.add("up");
         }
-         // Hide splash screen completely after animation
-         setTimeout(() => {
+        
+        // Libera o scroll do body
+        if (document.body) {
+          document.body.classList.add("loaded");
+        }
+
+        // Delay showing content until splash screen animation is partway through
+        setTimeout(() => {
+          if (content) {
+            content.classList.add("show");
+          }
+          // Hide splash screen completely after animation
+          setTimeout(() => {
             if (splashScreen) {
-                splashScreen.style.display = 'none';
+              splashScreen.style.display = 'none';
             }
-        }, 500); // Matches the slideUp animation duration
-      }, 1000); // Start fading in content slightly before splash is fully gone
+          }, 500); // Matches the slideUp animation duration
+        }, 1000); // Start fading in content slightly before splash is fully gone
+      };
+
+      // Total time splash screen is visible before starting slide up
+      setTimeout(() => {
+        hideSplashScreen();
+      }, 3500);
+    }, 0);
+
+    return () => {
+      clearTimeout(initTimer);
     };
-
-    // Total time splash screen is visible before starting slide up
-    const splashTimer = setTimeout(() => {
-      hideSplashScreen();
-    }, 3500);
-
-    return () => clearTimeout(splashTimer);
   }, []);
 
   return (

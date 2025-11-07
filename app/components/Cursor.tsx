@@ -37,22 +37,39 @@ const CursorComponent = () => {
             setIsVisible(false);
         };
 
-        window.addEventListener('mousemove', handleMouseMove, { passive: true });
-        document.addEventListener('mouseenter', handleMouseEnter);
-        document.addEventListener('mouseleave', handleMouseLeave);
+        // Garantir que estamos no cliente antes de modificar o DOM
+        if (typeof window !== 'undefined') {
+            window.addEventListener('mousemove', handleMouseMove, { passive: true });
+            document.addEventListener('mouseenter', handleMouseEnter);
+            document.addEventListener('mouseleave', handleMouseLeave);
 
-        // Esconder cursor padrão quando o componente estiver montado
-        document.body.style.cursor = 'none';
+            // Esconder cursor padrão quando o componente estiver montado
+            // Usar setTimeout para garantir que a hidratação já aconteceu
+            const timer = setTimeout(() => {
+                if (document.body) {
+                    document.body.style.cursor = 'none';
+                }
+            }, 0);
 
+            return () => {
+                clearTimeout(timer);
+                window.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseenter', handleMouseEnter);
+                document.removeEventListener('mouseleave', handleMouseLeave);
+                if (rafId.current !== null) {
+                    cancelAnimationFrame(rafId.current);
+                }
+                // Restaurar cursor padrão ao desmontar
+                if (document.body) {
+                    document.body.style.cursor = 'auto';
+                }
+            };
+        }
+        
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-            document.removeEventListener('mouseenter', handleMouseEnter);
-            document.removeEventListener('mouseleave', handleMouseLeave);
             if (rafId.current !== null) {
                 cancelAnimationFrame(rafId.current);
             }
-            // Restaurar cursor padrão ao desmontar
-            document.body.style.cursor = 'auto';
         };
     }, []);
 

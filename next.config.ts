@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Otimizar bundle
   experimental: {
-    optimizePackageImports: ["react-icons", "framer-motion", "lucide-react"],
+    optimizePackageImports: ["react-icons", "framer-motion", "flowbite-react"],
   },
 
   // Configurações de imagem otimizadas
