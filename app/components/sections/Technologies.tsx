@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaDatabase, FaPhp, FaGitAlt, FaDocker, FaCode, FaCalendar } from "react-icons/fa";
 import { SiTypescript, SiTailwindcss, SiNextdotjs, SiPostgresql, SiJavascript, SiPrisma } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { GrMysql } from "react-icons/gr";
+import { SiN8n } from "@icons-pack/react-simple-icons";
 
 interface Technology {
   nome: string;
@@ -116,6 +116,14 @@ const tecnologias: Technology[] = [
     color: "#19D1C2"
   },
   {
+    nome: "n8n",
+    icon: <SiN8n size={48} className="text-[#19D1C2]" />,
+    proficiency: 90,
+    description: "Plataforma de automação de workflows com interface visual para integração de serviços",
+    category: "tools",
+    color: "#19D1C2"
+  },
+  {
     nome: "Docker",
     icon: <FaDocker size={48} className="text-[#19D1C2]" />,
     proficiency: 78,
@@ -164,30 +172,6 @@ export default function Technologies() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [hoveredTech, setHoveredTech] = useState<Technology | null>(null);
-
-  const tooltipVariants = {
-    hidden: { opacity: 0, scale: 0.9, y: 5 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        type: "tween",
-        duration: 0.15,
-        ease: "easeOut"
-      }
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.9,
-      y: 5,
-      transition: {
-        type: "tween",
-        duration: 0.1,
-        ease: "easeIn"
-      }
-    }
-  };
 
   return (
     <section
@@ -239,32 +223,22 @@ export default function Technologies() {
             </span>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {mainTechnologies.map((tech, index) => (
-              <motion.div
+            {mainTechnologies.map((tech) => (
+              <div
                 key={tech.nome}
                 className="group relative"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                onHoverStart={() => setHoveredTech(tech)}
-                onHoverEnd={() => setHoveredTech(null)}
+                onMouseEnter={() => setHoveredTech(tech)}
+                onMouseLeave={() => setHoveredTech(null)}
               >
-                <div className="relative bg-gray-900/70 border border-gray-700/50 rounded-xl p-6 flex flex-col items-center gap-3 hover:border-[#19D1C2]/40 transition-all duration-150 cursor-none backdrop-blur-sm">
-                  {/* Ícone */}
+                <div className="relative bg-gray-900/70 border border-gray-700/50 rounded-xl p-6 flex flex-col items-center gap-3 hover:border-[#19D1C2]/40 transition-all duration-200 cursor-pointer backdrop-blur-sm">
                   <div className="relative w-16 h-16 flex items-center justify-center">
                     <div className={`w-18 h-18 flex items-center justify-center ${tech.color === "#000000" ? "bg-white rounded" : ""}`}>
                       {tech.icon}
                     </div>
-
                   </div>
-
-                  {/* Nome */}
                   <h3 className="text-sm font-semibold text-white text-center">{tech.nome}</h3>
-
-
-
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>
@@ -291,68 +265,46 @@ export default function Technologies() {
                 </span>
               </motion.h3>
 
-              {/* Grid de tecnologias */}
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                {techs.map((tech, index) => (
-                  <motion.div
+                {techs.map((tech) => (
+                  <div
                     key={tech.nome}
                     className="group relative"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ delay: 0.6 + categoryIndex * 0.1 + index * 0.05, duration: 0.4 }}
-                    onHoverStart={() => setHoveredTech(tech)}
-                    onHoverEnd={() => setHoveredTech(null)}
+                    onMouseEnter={() => setHoveredTech(tech)}
+                    onMouseLeave={() => setHoveredTech(null)}
                   >
-                    <div className="bg-gray-900/70 border border-gray-700/50 rounded-lg p-4 hover:border-[#19D1C2]/40 transition-all duration-150 cursor-none backdrop-blur-sm h-full flex flex-col items-center gap-3">
-                      {/* Ícone */}
+                    <div className="bg-gray-900/70 border border-gray-700/50 rounded-lg p-4 hover:border-[#19D1C2]/40 transition-all duration-200 cursor-pointer backdrop-blur-sm h-full flex flex-col items-center gap-3">
                       <div className="w-12 h-12 flex items-center justify-center">
                         <div className={`${tech.color === "#000000" ? "bg-[#19D1C2]/10 rounded p-1" : ""}`}>
                           {tech.icon}
                         </div>
                       </div>
-
-                      {/* Nome */}
                       <h4 className="font-semibold text-white text-sm text-center">{tech.nome}</h4>
-
-
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
           ))}
         </motion.div>
 
-        {/* Tooltip para tecnologia hover */}
-        <AnimatePresence mode="wait">
-          {hoveredTech && (
-            <motion.div
-              key={hoveredTech.nome}
-              className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 max-w-sm pointer-events-none"
-              variants={tooltipVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <div className="bg-gray-900/95 border border-[#19D1C2]/30 backdrop-blur-xl rounded-xl p-5 shadow-2xl shadow-[#19D1C2]/20">
-                <div className="flex items-start gap-4 mb-3">
-                  <div className="flex-shrink-0">
-                    {hoveredTech.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-white mb-2">{hoveredTech.nome}</h3>
-                    <p className="text-gray-300 text-sm leading-relaxed mb-3">{hoveredTech.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs capitalize px-2 py-1 bg-[#19D1C2]/20 text-[#19D1C2] rounded">
-                        {hoveredTech.category}
-                      </span>
-                    </div>
-                  </div>
+        {/* Tooltip simplificado */}
+        {hoveredTech && (
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 max-w-sm pointer-events-none">
+            <div className="bg-gray-900/95 border border-[#19D1C2]/30 backdrop-blur-xl rounded-xl p-5 shadow-2xl">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">{hoveredTech.icon}</div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-white mb-2">{hoveredTech.nome}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed mb-3">{hoveredTech.description}</p>
+                  <span className="text-xs capitalize px-2 py-1 bg-[#19D1C2]/20 text-[#19D1C2] rounded">
+                    {hoveredTech.category}
+                  </span>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          </div>
+        )}
 
         {/* Stats Overview */}
         <motion.div
