@@ -3,7 +3,7 @@ import { useState, useRef, useMemo } from "react";
 import ProjectItem from "../ProjectItem";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { FaFilter, FaCode } from "react-icons/fa";
+import { FaFilter, FaCode, FaSearch } from "react-icons/fa";
 import styles from "../styles/Projects.module.css";
 
 // Projetos existentes + um novo exemplo para demo

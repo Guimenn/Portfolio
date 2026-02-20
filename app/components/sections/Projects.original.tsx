@@ -1,9 +1,9 @@
 "use client";
-import { useState, useRef, useMemo, memo } from "react";
+import { useState, useRef, useMemo } from "react";
 import ProjectItem from "../ProjectItem";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { FaFilter, FaCode } from "react-icons/fa";
+import { FaFilter, FaCode, FaSearch } from "react-icons/fa";
 import styles from "../styles/Projects.module.css";
 
 // Projetos existentes + um novo exemplo para demo
@@ -101,6 +101,8 @@ const allTechnologies = [...new Set(projectsData.flatMap(p => p.technologies))];
 export default function Projects() {
   const [activeProject, setActiveProject] = useState(projectsData[0]);
   const [selectedTech, setSelectedTech] = useState("all");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
@@ -122,6 +124,11 @@ export default function Projects() {
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 }
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
   return (
